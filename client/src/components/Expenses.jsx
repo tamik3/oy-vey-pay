@@ -22,23 +22,22 @@ export const Expenses = () => {
     const tagRef = useRef(null);
     const currencyRef = useRef(null);
 
-    const maxAmount = expenses.length? Math.max(...expenses.map((expense) => expense.amount)) : 0;
+    const maxAmount = expenses.length ? Math.max(...expenses.map((expense) => expense.amount)) : 0;
 
     console.log(maxAmount);
 
-    const filteredExpenses = expenses?.filter((expense) =>
-    {
-       const matchSearch = expense.title.toLowerCase().includes(inputSearch.toLowerCase());
+    const filteredExpenses = expenses?.filter((expense) => {
+        const matchSearch = expense.title.toLowerCase().includes(inputSearch.toLowerCase());
 
-       if(selectedFilter && selectedFilter.type === 'amount'){
-            return(
+        if (selectedFilter && selectedFilter.type === 'amount') {
+            return (
                 matchSearch &&
                 expense.amount >= selectedFilter.min &&
                 expense.amount <= selectedFilter.max
             )
-       }
+        }
 
-       return matchSearch;
+        return matchSearch;
     });
 
     const resetFields = () => {
@@ -183,45 +182,47 @@ export const Expenses = () => {
                     {editExpenseId ? 'Update Expense' : 'Add Expense'}
                 </button>
             </form>
-            <Filters 
-            inputSearch={inputSearch} 
-            setInputSearch={setInputSearch}
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-            maxAmount={maxAmount}
+            <Filters
+                inputSearch={inputSearch}
+                setInputSearch={setInputSearch}
+                selectedFilter={selectedFilter}
+                setSelectedFilter={setSelectedFilter}
+                maxAmount={maxAmount}
             />
             {filteredExpenses.length ? (
-                <table className='expenses-table'>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Amount</th>
-                            <th>Tag</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredExpenses.map((expense) => (
-                            <tr key={expense._id}>
-                                <td>{expense.title}</td>
-                                <td>{expense.description}</td>
-                                <td>{expense.amount}{CURRENCY_SYMBOLS[expense.currency]}</td>
-                                <td>{expense.tag}</td>
-                                <td>
-                                    <div className='action-buttons'>
-                                        <button className='edit-button' onClick={() => handleEditExpense(expense)}>Edit</button>
-                                        <button className='delete-button' onClick={() => handleDeleteExpense(expense._id)}>Delete</button>
-                                    </div>
-                                </td>
+                <div className='table-container'>
+                    <table className='expenses-table'>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Tag</th>
+                                <th>Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>) : inputSearch ?(
+                        </thead>
+                        <tbody>
+                            {filteredExpenses.map((expense) => (
+                                <tr key={expense._id}>
+                                    <td>{expense.title}</td>
+                                    <td>{expense.description}</td>
+                                    <td>{expense.amount}{CURRENCY_SYMBOLS[expense.currency]}</td>
+                                    <td>{expense.tag}</td>
+                                    <td>
+                                        <div className='action-buttons'>
+                                            <button className='edit-button' onClick={() => handleEditExpense(expense)}>Edit</button>
+                                            <button className='delete-button' onClick={() => handleDeleteExpense(expense._id)}>Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>) : inputSearch ? (
                     <p className='not-found'>"{inputSearch}" not found</p>
                 ) : (
-                    <p className='not-found'>No expenses found</p>
-                )}
+                <p className='not-found'>No expenses found</p>
+            )}
         </main>
 
 
