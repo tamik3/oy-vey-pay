@@ -1,0 +1,121 @@
+.expense-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1rem 1rem 1rem;
+}
+
+.expense-container h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.expense-container div {
+  margin-bottom: 1.5rem;
+}
+
+.expense-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.expense-container input,
+.expense-container select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.expense-container input::placeholder {
+  color: #9ca3af;
+}
+
+.expense-container select {
+  background-color: white;
+  cursor: pointer;
+}
+
+.expense-button {
+  width: auto;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.expense-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: none;
+}
+
+.expenses-table {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+}
+
+.expenses-table th,
+.expenses-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.expenses-table th {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.expenses-table td {
+  color: #111827;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-button,
+.delete-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.edit-button {
+  background-color: var(--dark-blue);
+  color: white;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+}
+
+.not-found {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #6b7280
+}
